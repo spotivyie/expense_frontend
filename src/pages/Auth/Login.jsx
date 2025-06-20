@@ -5,7 +5,7 @@ import AuthLayout from '../../components/layouts/AuthLayout'
 import { validateEmail } from '../../utils/helper'
 import axiosInstance from '../../utils/axiosInstance'
 import { API_PATHS } from '../../utils/apiPaths'
-import { UserContext } from '../../context/userContext'
+import { UserContext } from '../../context/UserContext'
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -54,7 +54,7 @@ const Login = () => {
 
     return (
         <AuthLayout>
-            <div className='lg:w-[70%] h-3/4 md:h-full flex flex-col justify-center'>
+            <div className='lg:w-[60%] h-3/4 md:h-full flex flex-col justify-center'>
                 <h3 className='text-xl font-semibold text-black'>Bem-vindo</h3>
                 <p className='text-xs text-slate-700 mt-[5px] mb-6'>
                     Insira seus dados para efetuar login

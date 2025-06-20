@@ -3,60 +3,63 @@ import { SIDE_MENU_DATA } from '../../utils/data'
 import { UserContext } from '../../context/UserContext'
 import { useNavigate } from 'react-router-dom'
 import CharAvatar from '../Cards/CharAvatar'
+import { Link } from 'react-router-dom';
 
-const SideMenu = ({activeMenu}) => {
-    const {user, clearUser} = useContext(UserContext)
-
+const SideMenu = ({ activeMenu, mobile = false }) => {
+    const { user, clearUser } = useContext(UserContext)
     const navigate = useNavigate()
 
     const handleClick = (route) => {
-        if(route === "logout"){
-            handleLogout()
-            return
+        if (route === "logout") {
+            localStorage.clear()
+            clearUser()
+            navigate("/login")
+        } else {
+            navigate(route)
         }
-
-        navigate(route)
-    }
-
-    const handleLogout = () =>{
-        localStorage.clear()
-        clearUser()
-        navigate("/login")
     }
 
     return (
-        <div className='w-64 h-[calc(100vh-61px)] bg-white border-r border-gray-200/50 p-5 sticky top-[61px] z-20'>
-            <div className='flex flex-col items-center justify-center gap-3 mt-3 mb-7'>
+        <div className={`w-full ${mobile ? 'flex-col gap-4' : 'flex justify-between items-center'} flex`}>
+            {/* User Info */}
+            <Link
+                to="/profile"
+                className="flex items-center gap-3 mb-2 lg:mb-0 pr-6 hover:opacity-90"
+            >
                 {user?.profileImageUrl ? (
                     <img
-                        src={user?.profileImageUrl || ""}
-                        alt="Profile image"
-                        className='w-20 h-20 bg-slate-400 rounded-full'
-                    />) : <CharAvatar
-                            fullName={user?.fullName}
-                            width="w-20"
-                            height="h-20"
-                            style="text-xl"
-                        />
-                }
+                        src={user.profileImageUrl}
+                        alt="Profile"
+                        className="w-10 h-10 rounded-full bg-slate-400"
+                    />
+                ) : (
+                    <CharAvatar
+                        fullName={user?.fullName}
+                        width="w-10"
+                        height="h-10"
+                        style="text-sm"
+                    />
+                )}
+                <span className="text-gray-800 font-medium block">{user?.fullName}</span>
+            </Link>
 
-                <h5 className='text-gray-950 font-medium leading-6'>
-                    {user?.fullName || ""}
-                </h5>
+            {/* Menu Buttons */}
+            <div className={`flex ${mobile ? 'flex-col' : 'flex-row'} gap-2`}>
+                {SIDE_MENU_DATA.map((item, index) => (
+                    <button
+                        key={`menu_${index}`}
+                        onClick={() => handleClick(item.path)}
+                        className={`flex items-center gap-2 text-sm px-4 py-2 rounded-md transition ${
+                            activeMenu === item.label
+                                ? 'text-gray-700 hover:bg-gray-100'
+                                : 'text-gray-700 hover:bg-gray-100'
+                        }`}
+                    >
+                        <item.icon className='text-lg' />
+                        <span className='md:inline'>{item.label}</span>
+                    </button>
+                ))}
             </div>
-
-            {SIDE_MENU_DATA.map((item, index) => (
-                <button
-                    key={`menu_${index}`}
-                    className={`w-full flex items-center gap-4 text-[15px] ${
-                        activeMenu == item.label ? "text-white bg-primary" : ""
-                    } py-3 px-6 rounded-lg mb-3`}
-                    onClick={() => handleClick(item.path)}
-                >
-                    <item.icon className='text-xl'/>
-                    {item.label}
-                </button>
-            ))}
         </div>
     )
 }

@@ -40,8 +40,9 @@ export const prepareExpenseBarChartData = (data = []) => {
 
 export const prepareIncomeBarCharData = (data = []) => {
     const sortedData = [...data].sort((a, b) => new Date(a.date) - new Date(b.date))
+    const formatter = new Intl.DateTimeFormat('pt-BR', { day: 'numeric', month: 'short' })
     const chartData = sortedData.map((item) => ({
-        month: moment(item?.date).format("Do MMM"),
+        month: formatter.format(new Date(item?.date)),
         amount: item?.amount,
         source: item?.source,
     }))
@@ -51,11 +52,29 @@ export const prepareIncomeBarCharData = (data = []) => {
 
 export const prepareExpenseLineChartData = (data = []) => {
     const sortedData = [...data].sort((a, b) => new Date(a.date) - new Date(b.date))
-    const chartData = sortedData.map((item) => ({
-        month: moment(item?.date).format("Do MMM"),
-        amount: item?.amount,
-        category: item?.category,
-    }))
+    const formatter = new Intl.DateTimeFormat('pt-BR', { month: 'short' })
+    const chartData = sortedData.map((item) => {
+        const day = new Date(item?.date).getDate()
+        return {
+            month: `${day}º ${formatter.format(new Date(item?.date))}`,  
+            amount: item?.amount,
+            category: item?.category,
+        }
+    })
 
     return chartData
 }
+
+export const formatDateToPtBr = (date) => {
+    if (!date) return '';
+
+    const dt = new Date(date);
+    // Ajusta para fuso horário local sem perder o dia
+    const localDate = new Date(dt.getTime() + dt.getTimezoneOffset() * 60000);
+
+    return localDate.toLocaleDateString('pt-BR', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+    });
+};

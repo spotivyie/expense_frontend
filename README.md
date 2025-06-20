@@ -1,12 +1,60 @@
-# React + Vite
+# 💸 Expense Tracker (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Expense Tracker** é uma aplicação web para controle financeiro pessoal, desenvolvida com **React** e **Vite**. A plataforma permite cadastrar entradas e saídas, visualizar gráficos financeiros interativos, exportar dados e gerenciar transações de forma intuitiva e responsiva.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+- React 19
+- Vite
+- Tailwind CSS 4
+- React Router DOM v7
+- Axios
+- Recharts (Gráficos dinâmicos)
+- React Hot Toast (Notificações)
+- Emoji Picker React (Seleção de ícones)
+- Moment.js (Datas e formatação)
+- React Icons
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📦 Scripts Disponíveis
+
+| Comando           | Descrição                                      |
+|------------------|-------------------------------------------------|
+| `npm run dev`    | Inicia o servidor de desenvolvimento            |
+| `npm run build`  | Compila a aplicação para produção               |
+| `npm run preview`| Visualiza a build em ambiente local             |
+| `npm run lint`   | Verifica erros e padrões no código com ESLint   |
+
+---
+
+## 📊 Funcionalidades Implementadas
+
+- Login e registro de usuário
+- Dashboard com estatísticas financeiras
+- Adição, edição e remoção de receitas e despesas
+- Upload de foto de perfil
+- Visualização de gráficos (Pizza, Linha, Barra)
+- Filtros por data e tipo de transação
+- Interface moderna e responsiva
+- Feedback visual com notificações toast
+
+---
+
+## 📈 Recursos Futuramente Inclusos
+
+- Exportação de transações em PDF ou Excel
+- Tema escuro/claro
+- Limites de orçamento com alertas
+- Multiusuário com perfis personalizados
+
+---
+
+## 🧑‍💻 Desenvolvido por
+
+- Eduarda Cardoso Brandão  
+- Projeto pessoal com foco em controle financeiro, gráficos com Recharts e boas práticas de desenvolvimento frontend moderno com React.
+
+---

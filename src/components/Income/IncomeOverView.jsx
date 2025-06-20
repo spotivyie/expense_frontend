@@ -5,6 +5,7 @@ import { prepareIncomeBarCharData } from '../../utils/helper'
 
 const IncomeOverView = ({transactions, onAddIncome}) => {
     const [chartData, setCharData] = useState([])
+    
     useEffect(() => {
         const result = prepareIncomeBarCharData(transactions)
         setCharData(result)
@@ -14,15 +15,17 @@ const IncomeOverView = ({transactions, onAddIncome}) => {
 
     return (
         <div className="card">
-            <div className="flex items-center justify-between">
+            <div className="block space-y-6 sm:space-y-0 sm:flex items-center justify-between">
                 <div className="">
-                    <h5 className="text-lg">Income Overview</h5>
-                    <p className='text-xs text-gray-400 mt-0.5'>Track your earnings over time and analyze your income trends</p>
+                    <h5 className="text-lg">Visão geral de renda</h5>
+                    <p className='text-xs text-gray-400 mt-0.5'>
+                        Acompanhe seus ganhos ao longo do tempo e analise suas tendências de renda
+                    </p>
                 </div>
 
                 <button className="add-btn" onClick={onAddIncome}>
                     <LuPlus className="text-lg"/>
-                    Add Income
+                    Adicionar Renda
                 </button>
             </div>
 

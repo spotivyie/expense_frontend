@@ -10,8 +10,13 @@ import SignUp from "./pages/Auth/SignUp"
 import Home from "./pages/Dashboard/Home"
 import Income from "./pages/Dashboard/Income"
 import Expense from "./pages/Dashboard/Expense"
-import UserProvider from "./context/userContext"
+import UserProvider from "./context/UserContext"
+import ProfileEdit from "./pages/User/ProfileEdit"
 import {Toaster} from 'react-hot-toast'
+import moment from 'moment'
+import 'moment/locale/pt-br'
+
+moment.locale('pt-br')
 
 const App = () => {
   return (
@@ -21,6 +26,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Root/>}/>
             <Route path="/login" exact element={<Login/>}/>
+            <Route path="/profile" exact element={<ProfileEdit/>}/>
             <Route path="/signUp" exact element={<SignUp/>}/>
             <Route path="/dashboard" exact element={<Home/>}/>
             <Route path="/income" exact element={<Income/>}/>

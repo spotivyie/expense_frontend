@@ -38,7 +38,7 @@ const Expense = () => {
                 setExpenseData(response.data)
             }
         }catch(error){
-            console.log("Something went wrong. Please try again", error)
+            console.log("Algo deu errado. Tente novamente.", error)
         }finally{
             setLoading(false)
         }
@@ -50,12 +50,12 @@ const Expense = () => {
 
         //validation checks 
         if(!category.trim()){
-            toast.error("Category is required")
+            toast.error("A categoria é obrigatória")
             return
         }
 
         if(!amount || isNaN(amount) || Number(amount) <= 0){
-            toast.error("Amount should be a valid number greater than 0")
+            toast.error("O valor deve ser um número válido maior que 0")
             return
         }
 
@@ -73,11 +73,11 @@ const Expense = () => {
             })
 
             setOpenAddExpenseModal(false)
-            toast.success("Expense added successfully")
+            toast.success("Despesa adicionada com sucesso")
             fetchExpenseDetails()
         } catch(error){
             console.error(
-                "Error adding expense:",
+                "Erro ao adicionar despesa:",
                 error.response?.data?.message || error.message
             )
         }
@@ -95,11 +95,11 @@ const Expense = () => {
             await axiosInstance.delete(API_PATHS.EXPENSE.DELETE_EXPENSE(id))
 
             setOpenDeleteAlert({show:false, data:null})
-            toast.success("Expense details deleted successfully")
+            toast.success("Detalhe de despesa excluído com sucesso")
             fetchExpenseDetails()
         }catch(error){
             console.error(
-                "Error deleting expense",
+                "Erro ao deletar despesa",
                 error.response?.data?.message || error.message
             )
         }
@@ -133,7 +133,7 @@ const Expense = () => {
     return (
         <DashboardLayout activeMenu="Expense">
             <div className='my-5 mx-auto'>
-                <div className=''>
+                <div className='grid grid-cols-1 gap-6'>
                     <div className=''>
                         <ExpenseOverview
                             transactions={expenseData}
@@ -153,7 +153,7 @@ const Expense = () => {
                 <Modal
                     isOpen={openAddExpenseModal}
                     onClose={() => setOpenAddExpenseModal(false)}
-                    title="Add Expense"
+                    title="Adicionar Despesa"
                 >
                     <AddExpenseForm onAddExpense={handleAddExpense}/>
                 </Modal>
@@ -161,10 +161,10 @@ const Expense = () => {
                 <Modal
                     isOpen={openDeleteAlert.show}
                     onClose={() => setOpenDeleteAlert({show:false, data:null})}
-                    title="Delete Expense"
+                    title="Excluir Despesa"
                 >
                     <DeleteAlert
-                        content="Are you sure you want to delete this expense detail?"
+                        content="Tem certeza de que deseja excluir este detalhe de despesa?"
                         onDelete={() => deleteExpense(openDeleteAlert.data)}
                     />
                 </Modal>

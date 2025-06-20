@@ -22,15 +22,15 @@ const AddExpenseForm = ({ onAddExpense }) => {
             <Input
                 value={income.category}
                 onChange={({target}) => handleChange("category", target.value)}
-                label="Category"
-                placeholder="Rent, Groceries, etc"
+                label="Categoria"
+                placeholder="Aluguel, Mantimentos, etc"
                 type="text"
             />
 
             <Input
                 value={income.amount}
                 onChange={({target}) => handleChange("amount", target.value)}
-                label="Amount"
+                label="Quantia"
                 placeholder=""
                 type="number"
             />
@@ -38,7 +38,7 @@ const AddExpenseForm = ({ onAddExpense }) => {
             <Input
                 value={income.date}
                 onChange={({target}) => handleChange("date", target.value)}
-                label="Date"
+                label="Data"
                 placeholder=""
                 type="date"
             />
@@ -49,7 +49,7 @@ const AddExpenseForm = ({ onAddExpense }) => {
                     className='add-btn add-btn-fill'
                     onClick={() => onAddExpense(income)}
                 >
-                    Add Expense
+                    Adicionar Despesa
                 </button>
             </div>
         </div>

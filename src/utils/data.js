@@ -14,19 +14,19 @@ export const SIDE_MENU_DATA = [
     },
     {
         id: "02",
-        label: 'Income',
+        label: 'Rendas',
         icon: LuWalletMinimal,
         path: "/income",
     },
     {
         id: "03",
-        label: 'Expense',
+        label: 'Despesas',
         icon: LuHandCoins,
         path: "/expense",
     },
     {
         id: "06",
-        label: 'Logout',
+        label: 'Sair',
         icon: LuLogOut,
         path: "logout",
     },

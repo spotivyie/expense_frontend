@@ -39,7 +39,7 @@ const Income = () => {
                 setIncomeData(response.data)
             }
         }catch(error){
-            console.log("Something went wrong. Please try again", error)
+            console.log("Algo deu errado. Tente novamente.", error)
         }finally{
             setLoading(false)
         }
@@ -51,17 +51,17 @@ const Income = () => {
 
         //validation checks 
         if(!source.trim()){
-            toast.error("Source is required")
+            toast.error("A fonte de renda é obrigatória")
             return
         }
 
         if(!amount || isNaN(amount) || Number(amount) <= 0){
-            toast.error("Amount should be a valid number greater than 0")
+            toast.error("O valor deve ser um número válido maior que 0")
             return
         }
 
         if(!date){
-            toast.error("Date is required")
+            toast.error("A data é obrigatória")
             return
         }
 
@@ -74,11 +74,11 @@ const Income = () => {
             })
 
             setOpenAddIncomeModal(false)
-            toast.success("Income added successfully")
+            toast.success("Renda adicionada com sucesso")
             fetchIncomeDetails()
         } catch(error){
             console.error(
-                "Error adding income:",
+                "Erro ao adicionar renda:",
                 error.response?.data?.message || error.message
             )
         }
@@ -90,11 +90,11 @@ const Income = () => {
             await axiosInstance.delete(API_PATHS.INCOME.DELETE_INCOME(id))
 
             setOpenDeleteAlert({show:false, data:null})
-            toast.success("Income details deleted successfully")
+            toast.success("Detalhes de renda excluídos com sucesso")
             fetchIncomeDetails()
         }catch(error){
             console.error(
-                "Error deleting income",
+                "Erro ao deletar renda",
                 error.response?.data?.message || error.message
             )
         }
@@ -154,7 +154,7 @@ const Income = () => {
                 <Modal
                     isOpen={openAddIncomeModal}
                     onClose={() => setOpenAddIncomeModal(false)}
-                    title="Add Income"
+                    title="Adicionar renda"
                 >
                     <AddIncomeForm onAddIncome={handleAddIncome}/>
                 </Modal>
@@ -162,10 +162,10 @@ const Income = () => {
                 <Modal
                     isOpen={openDeleteAlert.show}
                     onClose={() => setOpenDeleteAlert({show:false, data:null})}
-                    title="Delete Income"
+                    title="Excluir renda"
                 >
                     <DeleteAlert
-                        content="Are you sure you want to delete this income detail?"
+                        content="Tem certeza de que deseja excluir este detalhe de renda?"
                         onDelete={() => deleteIncome(openDeleteAlert.data)}
                     />
                 </Modal>
