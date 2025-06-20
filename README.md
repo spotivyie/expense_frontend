@@ -52,9 +52,3 @@
 
 ---
 
-## 🧑‍💻 Desenvolvido por
-
-- Eduarda Cardoso Brandão  
-- Projeto pessoal com foco em controle financeiro, gráficos com Recharts e boas práticas de desenvolvimento frontend moderno com React.
-
----
