@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import { UserContext } from "../context/UserContext";
-import api from "../utils/api";
+import api from "../utils/axiosInstance";
 
 export function useProfile() {
   const { updateUser } = useContext(UserContext);
