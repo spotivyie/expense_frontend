@@ -10,7 +10,7 @@ const ExpenseOverview = ({transactions, onExpenseIncome}) => {
         const result = prepareExpenseLineChartData(transactions)
         setChartData(result)
 
-        return () => {}
+        return() => {}
     }, [transactions])
 
     return (
