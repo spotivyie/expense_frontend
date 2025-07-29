@@ -19,7 +19,6 @@ const SignUp = () => {
     const {updateUser} = useContext(UserContext)
     const navigate = useNavigate()
 
-    //envio de formulário
     const handleSignUp = async(e) => {
         e.preventDefault()
 
@@ -42,10 +41,7 @@ const SignUp = () => {
 
         setError("")
 
-        //signup api call
         try{
-
-            //upload image if present
             if(profilePic){
                 const imgUploadRes = await uploadImage(profilePic)
                 profileImageUrl = imgUploadRes.imageUrl || ""

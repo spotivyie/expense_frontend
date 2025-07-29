@@ -25,7 +25,6 @@ const Income = () => {
     })
     const [openAddIncomeModal, setOpenAddIncomeModal] = useState(false)
 
-    //get all incomes details
     const fetchIncomeDetails = async() => {
         if(loading) return
 
@@ -45,11 +44,9 @@ const Income = () => {
         }
     }
 
-    //handle add income
     const handleAddIncome = async(income) => {
         const {source, amount, date, icon} = income
 
-        //validation checks 
         if(!source.trim()){
             toast.error("A fonte de renda é obrigatória")
             return
@@ -84,7 +81,6 @@ const Income = () => {
         }
     }
 
-    //delete income
     const deleteIncome = async(id) => {
         try{
             await axiosInstance.delete(API_PATHS.INCOME.DELETE_INCOME(id))
@@ -100,7 +96,6 @@ const Income = () => {
         }
     }
 
-    //handle download income details
     const handleDownloadIncomeDetails = async() => {
         try{
             const response = await axiosInstance.get(
@@ -110,7 +105,6 @@ const Income = () => {
                 }
             )
 
-            //create a url for the blob
             const url = window.URL.createObjectURL(new Blob([response.data]))
             const link = document.createElement("a")
             link.href = url

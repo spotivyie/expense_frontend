@@ -24,7 +24,6 @@ const Expense = () => {
     })
     const [openAddExpenseModal, setOpenAddExpenseModal] = useState(false)
 
-    //get all expense details
     const fetchExpenseDetails = async() => {
         if(loading) return
 
@@ -44,11 +43,9 @@ const Expense = () => {
         }
     }
 
-    //handle add expense
     const handleAddExpense = async(expense) => {
         const {category, amount, date, icon} = expense
 
-        //validation checks 
         if(!category.trim()){
             toast.error("A categoria é obrigatória")
             return
@@ -89,7 +86,6 @@ const Expense = () => {
         return () => {}
     }, [])
 
-    //delete expense
     const deleteExpense = async(id) => {
         try{
             await axiosInstance.delete(API_PATHS.EXPENSE.DELETE_EXPENSE(id))
@@ -105,7 +101,6 @@ const Expense = () => {
         }
     }
 
-    //handle download expensee details
     const handleDownloadExpenseDetails = async() => {
         try{
             const response = await axiosInstance.get(
@@ -115,7 +110,6 @@ const Expense = () => {
                 }
             )
 
-            //create a url for the blob
             const url = window.URL.createObjectURL(new Blob([response.data]))
             const link = document.createElement("a")
             link.href = url

@@ -21,7 +21,6 @@ const SideMenu = ({ activeMenu, mobile = false }) => {
 
     return (
         <div className={`w-full ${mobile ? 'flex-col gap-4' : 'flex justify-between items-center'} flex`}>
-            {/* User Info */}
             <Link
                 to="/profile"
                 className="flex items-center gap-3 mb-2 lg:mb-0 pr-6 hover:opacity-90"
@@ -43,7 +42,6 @@ const SideMenu = ({ activeMenu, mobile = false }) => {
                 <span className="text-gray-800 font-medium block">{user?.fullName}</span>
             </Link>
 
-            {/* Menu Buttons */}
             <div className={`flex ${mobile ? 'flex-col' : 'flex-row'} gap-2`}>
                 {SIDE_MENU_DATA.map((item, index) => (
                     <button
