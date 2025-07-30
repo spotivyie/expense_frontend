@@ -88,23 +88,23 @@ const SignUp = () => {
                             value={fullName}
                             onChange={({target}) => setFullName(target.value)}
                             label="Nome completo"
-                            placeholder=""
+                            placeholder="Seu nome completo"
                             type="text"
                         />
 
                         <Input
                             value={email}
                             onChange={({target}) => setEmail(target.value)}
-                            label="Email"
-                            placeholder=""
+                            label="E-mail"
+                            placeholder="Seu e-mail"
                             type="text"
                         />
                         <div className='col-span-2'>
                             <Input
                                 value={password}
                                 onChange={({target}) => setPassword(target.value)}
-                                label="Password"
-                                placeholder=""
+                                label="Senha"
+                                placeholder="Sua senha"
                                 type="password"
                             />
                         </div>

@@ -63,16 +63,16 @@ const Login = () => {
                     <Input
                         value={email}
                         onChange={({target}) => setEmail(target.value)}
-                        label="Email"
-                        placeholder=""
+                        label="E-mail"
+                        placeholder="Seu e-mail"
                         type="text"
                     />
 
                     <Input
                         value={password}
                         onChange={({target}) => setPassword(target.value)}
-                        label="Password"
-                        placeholder=""
+                        label="Senha"
+                        placeholder="Sua senha"
                         type="password"
                     />
 
